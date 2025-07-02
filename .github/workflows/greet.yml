@@ -1,0 +1,24 @@
+name: Custom Greeting Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.10  # ✅ You can make this configurable
+
+    - name: Run greeting script
+      run: |
+        python script.py "John Doe"
+
